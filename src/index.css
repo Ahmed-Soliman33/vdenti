@@ -87,6 +87,15 @@
 
   /* Fonts */
   --font-rubik: "Rubik", sans-serif;
+  --font-cairo: "Cairo", sans-serif;
+
+  /* Hero Section Colors */
+  --color-hero-bg: #fdfbf7;
+  --color-hero-gold: #c1a077;
+  --color-hero-gold-hover: #b08e66;
+  --color-hero-badge-bg: #d4c3b0;
+  --color-hero-text-primary: #222222;
+  --color-hero-text-secondary: #666666;
 }
 
 @layer base {
@@ -103,7 +112,7 @@
   }
 
   html[dir="rtl"] body {
-    font-family: "Rubik", sans-serif !important;
+    font-family: "Rubik", "Cairo", sans-serif !important;
   }
 
   html {
@@ -422,6 +431,129 @@
     }
     .animate-glow-pulse {
       animation: none;
+    }
+  }
+
+  /* ==========================================
+     HERO FLOATING BADGE ANIMATION
+     ========================================== */
+
+  @keyframes float-badge {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float-badge 3s ease-in-out infinite;
+  }
+
+  /* Respect reduced motion for floating badges */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float {
+      animation: none;
+    }
+  }
+
+  /* Glass Morphism Card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(200, 179, 152, 0.2);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .glass-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    border-color: rgba(200, 179, 152, 0.4);
+  }
+
+  /* Enhanced Gradient Overlay for Service Cards */
+  .gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(0, 0, 0, 0.3) 70%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+    border-top: 1px solid rgba(200, 179, 152, 0.2);
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .group:hover .gradient-overlay {
+    opacity: 0.8;
+  }
+
+  /* Outline CTA Button with Hover Transition */
+  .cta-button {
+    border: 2px solid var(--color-primary);
+    background: transparent;
+    color: var(--color-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .cta-button:hover {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(200, 179, 152, 0.25);
+  }
+
+  .cta-button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  /* Arrow icon slide on hover */
+  .cta-button:hover .arrow-icon {
+    transform: translateX(3px);
+  }
+
+  /* RTL support for arrow icon */
+  [dir="rtl"] .cta-button:hover .arrow-icon {
+    transform: translateX(-3px);
+  }
+
+  .arrow-icon {
+    transition: transform 0.3s ease;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .glass-card,
+    .gradient-overlay,
+    .cta-button,
+    .arrow-icon {
+      transition: none;
+    }
+
+    .glass-card:hover {
+      transform: none;
+    }
+
+    .cta-button:hover .arrow-icon,
+    [dir="rtl"] .cta-button:hover .arrow-icon {
+      transform: none;
     }
   }
 }

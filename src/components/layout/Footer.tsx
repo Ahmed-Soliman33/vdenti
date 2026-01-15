@@ -8,9 +8,9 @@ import {
   FaMapMarkerAlt,
   FaClock,
 } from "react-icons/fa";
-import Logo from "../Logo";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import { CONTENT } from "@/lib/content";
+import Logo from "../shared/Logo";
 
 const Footer = () => {
   const { scrollToSection } = useSmoothScroll();
@@ -55,7 +55,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-primary pt-16 pb-8 text-white">
+    <footer className="bg-black pt-16 pb-8 text-white">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand Section */}
@@ -90,7 +90,7 @@ const Footer = () => {
                 <li key={link.id}>
                   <button
                     onClick={() => scrollToSection(link.id)}
-                    className="font-inter text-sm text-white/80 transition-colors hover:text-white"
+                    className="font-inter hover:text-primary text-sm text-white/80 transition-colors"
                   >
                     {link.label}
                   </button>
@@ -125,7 +125,7 @@ const Footer = () => {
                 <FaPhone className="text-lg" />
                 <a
                   href={`tel:${CONTENT.footer.contact.phoneValue}`}
-                  className="font-inter text-sm text-white/80 hover:text-white"
+                  className="font-inter hover:text-primary text-sm text-white/80"
                   dir="ltr"
                 >
                   {CONTENT.footer.contact.phoneValue}
@@ -135,7 +135,7 @@ const Footer = () => {
                 <FaEnvelope className="text-lg" />
                 <a
                   href={`mailto:${CONTENT.footer.contact.emailValue}`}
-                  className="font-inter text-sm text-white/80 hover:text-white"
+                  className="font-inter hover:text-primary text-sm text-white/80"
                 >
                   {CONTENT.footer.contact.emailValue}
                 </a>
@@ -157,24 +157,24 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-12 border-t border-white/10 pt-8">
+        <div className="border-primary/30 mt-12 border-t pt-8">
           <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <p className="font-inter text-center text-sm text-white/60 md:text-right">
               {CONTENT.footer.legal.copyright.replace(
                 "{year}",
-                new Date().getFullYear().toString()
+                new Date().getFullYear().toString(),
               )}
             </p>
             <div className="flex gap-6">
               <a
                 href="#"
-                className="font-inter text-sm text-white/60 transition-colors hover:text-white"
+                className="font-inter hover:text-primary text-sm text-white/60 transition-colors"
               >
                 {CONTENT.footer.legal.privacy}
               </a>
               <a
                 href="#"
-                className="font-inter text-sm text-white/60 transition-colors hover:text-white"
+                className="font-inter hover:text-primary text-sm text-white/60 transition-colors"
               >
                 {CONTENT.footer.legal.terms}
               </a>

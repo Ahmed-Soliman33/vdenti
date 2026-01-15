@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
 import Services from "@/components/sections/Services";
 import About from "@/components/sections/About";
-import Features from "@/components/sections/Features";
+import OurWork from "@/components/sections/OurWork";
 import Testimonials from "@/components/sections/Testimonials";
 import CTA from "@/components/sections/CTA";
 import Partners from "@/components/sections/Partners";
@@ -35,13 +35,13 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen overflow-hidden bg-white">
           <Navigation />
           <main>
             <Hero />
+            <OurWork />
             <Services />
             <About />
-            <Features />
             <Testimonials />
             <CTA />
             <Partners />

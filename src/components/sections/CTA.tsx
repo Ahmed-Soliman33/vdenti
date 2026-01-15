@@ -33,6 +33,7 @@ import { contactFormSchema, ContactFormData } from "@/lib/validations";
 import { getWhatsAppUrl } from "@/lib/constants";
 import { useToast } from "@/hooks/use-toast";
 import { CONTENT } from "@/lib/content";
+import ctaBackground from "@/assets/images/questions.webp";
 
 const CTA = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,8 +66,38 @@ const CTA = () => {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-gradient-to-br from-primary to-primary/90 py-20 text-white"
+      className="relative overflow-hidden py-20 text-white"
     >
+      {/* Background Image Layer */}
+      <motion.img
+        src={ctaBackground}
+        alt="Contact Background"
+        className="absolute inset-0 h-full w-full object-cover"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        loading="lazy"
+      />
+
+      {/* Primary Overlay for Brand Color and Readability */}
+      <div
+        className="absolute inset-0 bg-gradient-to-br from-primary/95 to-primary/85"
+        style={{ zIndex: 5 }}
+      />
+
+      {/* Subtle Gradient Overlay for Depth */}
+      <div
+        className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"
+        style={{ zIndex: 6 }}
+      />
+
+      {/* Decorative Blur Elements */}
+      <div className="absolute inset-0 opacity-10" style={{ zIndex: 8 }}>
+        <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-white blur-3xl" />
+        <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-white blur-3xl" />
+      </div>
+
+      {/* Content Container */}
       <div className="container relative z-10 mx-auto px-4">
         <SectionHeading
           badge={CONTENT.cta.badge}
@@ -92,12 +123,6 @@ const CTA = () => {
             {CONTENT.cta.button}
           </Button>
         </motion.div>
-      </div>
-
-      {/* Background Decoration */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute right-0 top-0 h-64 w-64 rounded-full bg-white blur-3xl" />
-        <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-white blur-3xl" />
       </div>
 
       {/* Contact Form Modal */}

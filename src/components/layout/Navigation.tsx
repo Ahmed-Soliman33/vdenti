@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { HiMenu, HiX } from "react-icons/hi";
-import Logo from "../Logo";
+import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
-import { Button } from "@/components/ui/button";
 import { CONTENT } from "@/lib/content";
+import Logo from "@/components/shared/Logo";
+import BurgerMenu from "@/components/header/side-menu/BurgerMenu";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(true);
+  const lastScrollY = useRef(window.scrollY);
   const { scrollToSection } = useSmoothScroll();
   const activeSection = useScrollSpy([
     "home",
@@ -30,116 +30,113 @@ const Navigation = () => {
   ];
 
   useEffect(() => {
+    let ticking: boolean = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentY = window.scrollY;
+
+          // Check if scrolled for background change
+          setIsScrolled(currentY > 50);
+
+          // Hide/show header logic
+          if (currentY > lastScrollY.current && currentY > 60) {
+            setShowHeader(false); // scrolling down
+          } else {
+            setShowHeader(true); // scrolling up
+          }
+          lastScrollY.current = currentY;
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [isMobileMenuOpen]);
-
   const handleNavClick = (sectionId: string) => {
     scrollToSection(sectionId);
-    setIsMobileMenuOpen(false);
   };
-
   return (
     <nav
       className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 shadow-md backdrop-blur-sm"
-          : "bg-transparent"
-      }`}
+        isScrolled ? "bg-white/15 shadow-md backdrop-blur-sm" : "bg-transparent"
+      } ${showHeader ? "translate-y-0" : "-translate-y-full"}`}
+      dir="rtl"
     >
       <div className="container mx-auto px-4">
-        <div className="flex h-20 items-center justify-between">
-          <Logo size="md" onClick={() => handleNavClick("home")} />
+        {/* Mobile Navigation */}
+        <motion.div
+          className="flex h-20 items-center justify-between lg:hidden"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          <Logo size="xs" clickable onClick={() => handleNavClick("home")} />
+          <div className="flex items-center gap-4">
+            <BurgerMenu isScrolled={isScrolled} />
+          </div>
+        </motion.div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden items-center gap-8 lg:flex">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => handleNavClick(link.id)}
-                className={`font-inter text-sm font-medium transition-colors ${
-                  activeSection === link.id
-                    ? "text-primary"
-                    : "text-gray-600 hover:text-primary"
-                }`}
-              >
-                {link.label}
-              </button>
-            ))}
-            <Button
-              onClick={() => handleNavClick("contact")}
-              className="bg-primary font-inter hover:bg-primary/90"
-            >
-              {CONTENT.nav.contact}
-            </Button>
+        {/* Desktop Navigation */}
+        <motion.div
+          className="hidden h-26 items-center justify-between pt-2 lg:flex"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+        >
+          {/* Left Group: Logo + Nav Links */}
+          <div className="flex items-center gap-18">
+            <Logo size="md" clickable onClick={() => handleNavClick("home")} />
+
+            {/* Nav Links */}
+            <div className="flex items-center gap-5">
+              {navLinks.map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() => handleNavClick(link.id)}
+                  className={`font-cairo relative text-[.97rem] font-normal transition-all duration-300 ${
+                    activeSection === link.id
+                      ? "text-primary"
+                      : isScrolled
+                        ? "hover:text-primary text-[#000]"
+                        : "hover:text-primary text-[#fff]"
+                  }`}
+                >
+                  {link.label}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="text-3xl text-primary lg:hidden"
-            aria-label="Toggle menu"
+          {/* Right: Enhanced Contact Button */}
+          <motion.button
+            onClick={() => handleNavClick("contact")}
+            className="font-cairo bg-primary relative overflow-hidden rounded-lg px-7 py-2.5 text-base font-normal text-white shadow-lg transition-all duration-300 hover:shadow-xl"
+            // style={{
+            //   boxShadow:
+            //     "0 10px 25px -5px rgba(25, 26, 51, 0.3), 0 0 15px rgba(25, 26, 51, 0.2)",
+            // }}
+            whileHover={{
+              scale: 1.01,
+              boxShadow:
+                "0 20px 40px -5px rgba(15, 16, 31, 0.2), 0 0 25px rgba(25, 26, 51, 0.1)",
+            }}
+            whileTap={{ scale: 0.98 }}
           >
-            {isMobileMenuOpen ? <HiX /> : <HiMenu />}
-          </button>
-        </div>
-      </div>
+            {CONTENT.nav.contact}
 
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <>
+            {/* Subtle glow effect overlay */}
             <motion.div
+              className="bg-primary-light from-primary-light to-primary absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity duration-300 hover:opacity-20"
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="fixed inset-0 top-20 bg-black/50 backdrop-blur-sm lg:hidden"
+              whileHover={{ opacity: 0.2 }}
             />
-            <motion.div
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-              className="fixed right-0 top-20 h-[calc(100vh-5rem)] w-full bg-white shadow-xl lg:hidden"
-            >
-              <div className="flex flex-col gap-2 p-6">
-                {navLinks.map((link) => (
-                  <button
-                    key={link.id}
-                    onClick={() => handleNavClick(link.id)}
-                    className={`rounded-lg p-4 text-right font-inter text-lg transition-colors ${
-                      activeSection === link.id
-                        ? "bg-primary/10 text-primary"
-                        : "text-gray-700 hover:bg-gray-100"
-                    }`}
-                  >
-                    {link.label}
-                  </button>
-                ))}
-                <Button
-                  onClick={() => handleNavClick("contact")}
-                  className="mt-4 bg-primary font-inter hover:bg-primary/90"
-                  size="lg"
-                >
-                  {CONTENT.nav.contact}
-                </Button>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+          </motion.button>
+        </motion.div>
+      </div>
     </nav>
   );
 };

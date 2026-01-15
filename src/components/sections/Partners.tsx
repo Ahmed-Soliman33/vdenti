@@ -2,13 +2,17 @@ import { motion } from "framer-motion";
 import SectionHeading from "@/components/shared/SectionHeading";
 import { CONTENT } from "@/lib/content";
 
+import partner1 from "@/assets/images/clients-logos/1.png";
+import partner2 from "@/assets/images/clients-logos/2.png";
+import partner3 from "@/assets/images/clients-logos/3.png";
+import partner4 from "@/assets/images/clients-logos/4.png";
+
 const Partners = () => {
-  // Partner logos as text for now (can be replaced with actual logos)
   const partners = [
-    "وزارة الصحة",
-    "الهيئة السعودية للتخصصات الصحية",
-    "مجلس الضمان الصحي",
-    "رؤية 2030",
+    { id: 1, logo: partner1, name: "شريك 1" },
+    { id: 2, logo: partner2, name: "شريك 2" },
+    { id: 3, logo: partner3, name: "شريك 3" },
+    { id: 4, logo: partner4, name: "شريك 4" },
   ];
 
   return (
@@ -21,19 +25,22 @@ const Partners = () => {
           subtitle={CONTENT.partners.subtitle}
         />
 
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
           {partners.map((partner, index) => (
             <motion.div
-              key={index}
+              key={partner.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex items-center justify-center rounded-xl bg-white p-8 shadow-md transition-shadow hover:shadow-lg"
+              className="flex items-center justify-center rounded-2xl bg-white p-6 shadow-sm"
             >
-              <span className="font-inter text-center text-sm font-bold text-gray-600 md:text-base">
-                {partner}
-              </span>
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                className="h-16 w-auto max-w-[140px] object-contain md:h-auto md:max-w-[170px]"
+                loading="lazy"
+              />
             </motion.div>
           ))}
         </div>
