@@ -15,7 +15,7 @@ const Navigation = () => {
     "home",
     "services",
     "about",
-    "features",
+    "portfolio",
     "testimonials",
     "faq",
   ]);
@@ -24,7 +24,7 @@ const Navigation = () => {
     { id: "home", label: CONTENT.nav.home },
     { id: "services", label: CONTENT.nav.services },
     { id: "about", label: CONTENT.nav.about },
-    { id: "features", label: CONTENT.nav.features },
+    { id: "portfolio", label: CONTENT.nav.portfolio },
     { id: "testimonials", label: CONTENT.nav.testimonials },
     { id: "faq", label: CONTENT.nav.faq },
   ];

@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import SectionHeading from "@/components/shared/SectionHeading";
 import { CONTENT } from "@/lib/content";
 
 import partner1 from "@/assets/images/clients-logos/1.png";
@@ -16,15 +15,24 @@ const Partners = () => {
   ];
 
   return (
-    <section className="bg-gray-50 py-20">
-      <div className="container mx-auto px-4">
-        <SectionHeading
-          badge={CONTENT.partners.badge}
-          title={CONTENT.partners.title}
-          titleHighlight={CONTENT.partners.titleHighlight}
-          subtitle={CONTENT.partners.subtitle}
-        />
+    <section className="relative overflow-hidden bg-white py-16">
+      {/* Container with beige background and rounded corners - matching other sections */}
+      <div className="mx-auto my-8 max-w-[95%] overflow-hidden rounded-[2rem] bg-[#FDFBF7] px-6 py-16 lg:rounded-[3rem] lg:px-20">
+        {/* Section Heading */}
+        <div className="mb-12 text-center">
+          <span className="inline-block rounded-full bg-[#C1A077]/10 px-4 py-2 font-cairo text-sm font-medium text-[#C1A077]">
+            {CONTENT.partners.badge}
+          </span>
+          <h2 className="mt-4 font-cairo text-3xl font-extrabold text-[#222222] md:text-4xl lg:text-5xl">
+            {CONTENT.partners.title}{" "}
+            <span className="text-[#C1A077]">{CONTENT.partners.titleHighlight}</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl font-cairo text-base text-[#666666] md:text-lg">
+            {CONTENT.partners.subtitle}
+          </p>
+        </div>
 
+        {/* Partners Grid */}
         <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
           {partners.map((partner, index) => (
             <motion.div
@@ -33,7 +41,7 @@ const Partners = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex items-center justify-center rounded-2xl bg-white p-6 shadow-sm"
+              className="flex items-center justify-center rounded-2xl bg-[#F8F5F0] p-6 shadow-sm transition-all duration-300 hover:shadow-md"
             >
               <img
                 src={partner.logo}

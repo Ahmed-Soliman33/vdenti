@@ -1,4 +1,3 @@
-import SectionHeading from "@/components/shared/SectionHeading";
 import ServiceCard from "@/components/shared/ServiceCard";
 import { IMAGES } from "@/lib/constants";
 import { CONTENT } from "@/lib/content";
@@ -32,41 +31,41 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="relative overflow-hidden bg-gray-50 py-20">
-      {/* Decorative Background Blobs */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {/* Blob 1 - Top Left */}
-        <div className="absolute -left-24 -top-24 h-96 w-96 rounded-full bg-primary/10 blur-3xl" />
+    <section id="services" className="relative overflow-hidden bg-white py-16">
+      {/* Container with beige background and rounded corners - matching other sections */}
+      <div className="mx-auto my-8 max-w-[95%] overflow-hidden rounded-[2rem] bg-[#FDFBF7] px-6 py-16 lg:rounded-[3rem] lg:px-20">
+        {/* Content (relative z-index to appear above blobs) */}
+        <div className="relative z-10">
+          {/* Section Heading */}
+          <div className="mb-12 text-center">
+            <span className="font-cairo inline-block rounded-full bg-[#C1A077]/10 px-4 py-2 text-sm font-medium text-[#C1A077]">
+              {CONTENT.services.badge}
+            </span>
+            <h2 className="font-cairo mt-4 text-3xl font-extrabold text-[#222222] md:text-4xl lg:text-5xl">
+              {CONTENT.services.title}{" "}
+              <span className="text-[#C1A077]">
+                {CONTENT.services.titleHighlight}
+              </span>
+            </h2>
+            <p className="font-cairo mx-auto mt-4 max-w-2xl text-base text-[#666666] md:text-lg">
+              {CONTENT.services.subtitle}
+            </p>
+          </div>
 
-        {/* Blob 2 - Top Right */}
-        <div className="absolute -right-32 top-12 h-80 w-80 rounded-full bg-primary/8 blur-3xl" />
-
-        {/* Blob 3 - Bottom Center */}
-        <div className="absolute -bottom-20 left-1/2 h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-primary/12 blur-3xl" />
-      </div>
-
-      {/* Content (relative z-index to appear above blobs) */}
-      <div className="container relative z-10 mx-auto px-4">
-        <SectionHeading
-          badge={CONTENT.services.badge}
-          title={CONTENT.services.title}
-          titleHighlight={CONTENT.services.titleHighlight}
-          subtitle={CONTENT.services.subtitle}
-        />
-
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              title={service.title}
-              description={service.description}
-              image={service.image}
-              category={service.category}
-              benefits={service.benefits}
-              ctaText={service.ctaText}
-              index={index}
-            />
-          ))}
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {services.map((service, index) => (
+              <ServiceCard
+                key={index}
+                title={service.title}
+                description={service.description}
+                image={service.image}
+                category={service.category}
+                benefits={service.benefits}
+                ctaText={service.ctaText}
+                index={index}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

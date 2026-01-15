@@ -20,7 +20,7 @@ const StatCard = ({ number, label, index }: StatCardProps) => {
       transition={{ duration: 0.5, delay: index * 0.1 }}
     >
       {/* Animated Number - Gold Color with Inter font for clean numerals */}
-      <div className="font-inter text-5xl font-bold text-[#C1A077] md:text-6xl">
+      <div className="font-inter text-5xl font-normal text-[#C1A077] md:text-6xl">
         <CountUp
           end={numericValue}
           duration={2.5}
@@ -31,7 +31,7 @@ const StatCard = ({ number, label, index }: StatCardProps) => {
       </div>
 
       {/* Label - Gray Color with Cairo font for Arabic */}
-      <p className="mt-2 font-cairo text-sm text-[#4A4A4A]">{label}</p>
+      <p className="font-cairo mt-2 text-sm text-[#4A4A4A]">{label}</p>
     </motion.div>
   );
 };

@@ -24,7 +24,10 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="relative overflow-hidden bg-white py-16">
+    <section
+      id="about"
+      className="relative overflow-hidden bg-white py-8 md:py-16"
+    >
       {/* Container with beige background and rounded corners */}
       <div className="mx-auto my-8 max-w-[95%] overflow-hidden rounded-[2rem] bg-[#FDFBF7] px-6 py-16 lg:rounded-[3rem] lg:px-20">
         {/* 1. Stats Cards Row - TOP */}
@@ -41,7 +44,7 @@ const About = () => {
 
         {/* 2. Heading - MIDDLE */}
         <motion.h2
-          className="mt-16 text-center font-cairo text-4xl font-extrabold text-[#222222] md:text-5xl"
+          className="font-cairo mt-16 text-center text-4xl font-extrabold text-[#222222] md:text-5xl"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -52,7 +55,7 @@ const About = () => {
 
         {/* 3. Body Paragraph - MIDDLE */}
         <motion.p
-          className="mx-auto mt-8 max-w-2xl text-center font-cairo text-sm leading-loose text-[#666666] md:text-base"
+          className="font-cairo mx-auto mt-8 max-w-3xl text-center text-sm leading-loose text-[#666666] md:text-base"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -69,7 +72,7 @@ const About = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <button className="rounded-lg bg-[#C1A077] px-8 py-3 font-cairo font-bold text-white transition-colors hover:bg-[#B08E66]">
+          <button className="font-cairo rounded-lg bg-[#C1A077] px-8 py-3 font-bold text-white transition-colors hover:bg-[#B08E66]">
             {CONTENT.about.cta}
           </button>
         </motion.div>

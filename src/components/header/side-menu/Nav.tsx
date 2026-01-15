@@ -16,7 +16,7 @@ export default function Nav({ onClose }: NavProps) {
     { name: CONTENT.nav.home, sectionId: "home" },
     { name: CONTENT.nav.about, sectionId: "about" },
     { name: CONTENT.nav.services, sectionId: "services" },
-    { name: CONTENT.nav.features, sectionId: "features" },
+    { name: CONTENT.nav.portfolio, sectionId: "portfolio" },
     { name: CONTENT.nav.testimonials, sectionId: "testimonials" },
     { name: CONTENT.nav.faq, sectionId: "faq" },
   ];
@@ -75,6 +75,9 @@ export default function Nav({ onClose }: NavProps) {
     };
   }, [navigationItems, observerCallback]);
 
+  const handleNavClick = (sectionId: string) => {
+    scrollToSection(sectionId);
+  };
   return (
     <div
       dir={direction}
@@ -115,14 +118,34 @@ export default function Nav({ onClose }: NavProps) {
       </div>
 
       {/* Bottom Section */}
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 px-6">
         {/* Separator */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="bg-primary/30 mx-auto h-0.5 w-[85%] origin-center"
+          className="bg-primary/30 mx-auto h-0.5 w-[94%] origin-center"
         />
+
+        <motion.button
+          onClick={() => handleNavClick("contact")}
+          className="font-cairo bg-primary relative overflow-hidden rounded-lg px-7 py-2.5 text-base font-normal text-white shadow-lg transition-all duration-300 hover:shadow-xl"
+          whileHover={{
+            scale: 1.01,
+            boxShadow:
+              "0 20px 40px -5px rgba(15, 16, 31, 0.2), 0 0 25px rgba(25, 26, 51, 0.1)",
+          }}
+          whileTap={{ scale: 0.98 }}
+        >
+          {CONTENT.nav.contact}
+
+          {/* Subtle glow effect overlay */}
+          <motion.div
+            className="bg-primary-light from-primary-light to-primary absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity duration-300 hover:opacity-20"
+            initial={{ opacity: 0 }}
+            whileHover={{ opacity: 0.2 }}
+          />
+        </motion.button>
       </div>
     </div>
   );

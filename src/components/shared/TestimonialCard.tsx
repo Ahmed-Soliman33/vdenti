@@ -1,66 +1,89 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { FaStar } from "react-icons/fa";
-import { Badge } from "@/components/ui/badge";
-import { CONTENT } from "@/lib/content";
+import { motion } from "framer-motion";
+import { FaStar, FaQuoteLeft } from "react-icons/fa";
 
 interface TestimonialCardProps {
   name: string;
-  avatar: string;
+  initial: string;
   rating: number;
   text: string;
   service: string;
+  index: number;
 }
 
 const TestimonialCard = ({
   name,
-  avatar,
+  initial,
   rating,
   text,
   service,
+  index,
 }: TestimonialCardProps) => {
+  // Use real portrait photos from pravatar.cc for premium look
+  // Grayscale filter applied via CSS to match team photo aesthetic
+  const avatar = `https://i.pravatar.cc/150?img=${index + 1}`;
+
   return (
-    <Card className="h-full border-none shadow-lg">
-      <CardContent className="p-6">
-        <div className="mb-4 flex items-center gap-4">
-          <Avatar className="h-16 w-16">
-            <AvatarImage src={avatar} alt={name} />
-            <AvatarFallback className="bg-primary font-inter text-xl text-white">
-              {name.charAt(0)}
-            </AvatarFallback>
-          </Avatar>
+    <motion.div
+      className="group relative h-full rounded-2xl bg-[#F8F5F0] p-8 shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+    >
+      {/* Large Decorative Quote Mark - Top Left */}
+      <FaQuoteLeft className="absolute left-6 top-6 text-5xl text-[#C1A077] opacity-20" />
+
+      {/* Content Container */}
+      <div className="relative z-10 flex h-full flex-col">
+        {/* Header: Avatar + Name + Rating */}
+        <div className="mb-6 flex items-center gap-4">
+          {/* Grayscale Avatar with Gold Border */}
+          <div className="relative">
+            <img
+              src={avatar}
+              alt={name}
+              className="h-16 w-16 rounded-full border-2 border-[#C1A077] object-cover grayscale"
+            />
+          </div>
+
+          {/* Name + Rating */}
           <div className="flex-1 text-right">
-            <h4 className="font-inter mb-1 text-lg font-bold text-gray-900">
+            <h4 className="mb-2 font-cairo text-lg font-bold text-[#222222]">
               {name}
             </h4>
+            {/* Star Rating - Gold */}
             <div className="flex items-center justify-end gap-1">
               {[...Array(5)].map((_, i) => (
                 <FaStar
                   key={i}
-                  className={`text-sm ${
-                    i < rating ? "text-yellow-400" : "text-gray-300"
+                  className={`text-base ${
+                    i < rating ? "text-[#C1A077]" : "text-gray-300"
                   }`}
                 />
               ))}
             </div>
           </div>
         </div>
-        <p className="font-inter mb-4 leading-relaxed text-gray-700">
+
+        {/* Testimonial Text */}
+        <p className="mb-6 flex-1 font-cairo text-sm leading-loose text-[#666666]">
           "{text}"
         </p>
-        <div className="flex items-center justify-between border-t pt-4">
-          <Badge
-            variant="secondary"
-            className="bg-primary/10 font-inter text-primary"
-          >
+
+        {/* Footer: Service Badge + Verified */}
+        <div className="flex items-center justify-between border-t border-[#C1A077]/20 pt-4">
+          {/* Service Badge - Gold Theme */}
+          <span className="rounded-lg bg-[#C1A077]/10 px-4 py-2 font-cairo text-xs font-medium text-[#C1A077]">
             {service}
-          </Badge>
-          <span className="font-inter text-xs text-gray-500">
-            {CONTENT.testimonials.verified}
+          </span>
+
+          {/* Verified Badge */}
+          <span className="font-cairo text-xs text-gray-500">
+            ✓ تجربة موثقة
           </span>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </motion.div>
   );
 };
 

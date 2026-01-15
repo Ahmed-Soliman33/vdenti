@@ -19,7 +19,7 @@ const Footer = () => {
     { id: "home", label: CONTENT.footer.links.home },
     { id: "services", label: CONTENT.footer.links.services },
     { id: "about", label: CONTENT.footer.links.about },
-    { id: "features", label: CONTENT.footer.links.features },
+    { id: "portfolio", label: CONTENT.footer.links.portfolio },
     { id: "testimonials", label: CONTENT.footer.links.testimonials },
     { id: "faq", label: CONTENT.footer.links.faq },
   ];
