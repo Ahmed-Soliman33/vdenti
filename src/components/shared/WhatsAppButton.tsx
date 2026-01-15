@@ -1,42 +1,25 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { getWhatsAppUrl } from "@/content/contact-data";
+import { getWhatsAppUrl } from "@/lib/constants";
 import { CONTENT } from "@/lib/content";
 
 const WhatsAppButton = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const whatsappUrl = getWhatsAppUrl("ar");
+  const whatsappUrl = getWhatsAppUrl();
 
   return (
     <div
-      className="fixed bottom-4 right-4 z-40 flex items-center gap-3 lg:bottom-8 lg:right-8 rtl:left-4 rtl:right-auto lg:rtl:left-8 lg:rtl:right-auto"
+      className="fixed right-4 bottom-4 z-50 flex items-center gap-3 lg:right-8 lg:bottom-8"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Tooltip Bar */}
-      <AnimatePresence>
-        {isHovered && (
-          <motion.div
-            initial={{ opacity: 0, x: 20, scale: 0.95 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: 20, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="rounded-full bg-white px-5 py-3 shadow-lg rtl:order-2"
-          >
-            <span className="whitespace-nowrap text-base font-medium text-gray-900">
-              {CONTENT.whatsapp.tooltip}
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* WhatsApp Button */}
       <motion.a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label={CONTENT.whatsapp.tooltip}
-        className="flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-shadow duration-300 lg:h-16 lg:w-16 rtl:order-1"
+        className="flex h-14 w-14 items-center justify-center rounded-full shadow-lg transition-shadow duration-300 lg:h-16 lg:w-16"
         whileHover={{
           scale: 1.1,
           boxShadow: "0 10px 30px rgba(73, 230, 112, 0.3)",
@@ -69,6 +52,23 @@ const WhatsAppButton = () => {
           />
         </svg>
       </motion.a>
+
+      {/* Tooltip Bar - positioned after button for RTL */}
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            initial={{ opacity: 0, x: -20, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: -20, scale: 0.95 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="rounded-full bg-white px-5 py-2 shadow-lg"
+          >
+            <span className="text-base font-medium whitespace-nowrap text-gray-900">
+              {CONTENT.whatsapp.tooltip}
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

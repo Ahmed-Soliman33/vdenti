@@ -20,14 +20,16 @@ const Partners = () => {
       <div className="mx-auto my-8 max-w-[95%] overflow-hidden rounded-[2rem] bg-[#FDFBF7] px-6 py-16 lg:rounded-[3rem] lg:px-20">
         {/* Section Heading */}
         <div className="mb-12 text-center">
-          <span className="inline-block rounded-full bg-[#C1A077]/10 px-4 py-2 font-cairo text-sm font-medium text-[#C1A077]">
+          <span className="font-cairo inline-block rounded-full bg-[#C1A077]/10 px-4 py-2 text-sm font-medium text-[#C1A077]">
             {CONTENT.partners.badge}
           </span>
-          <h2 className="mt-4 font-cairo text-3xl font-extrabold text-[#222222] md:text-4xl lg:text-5xl">
+          <h2 className="font-cairo mt-4 text-3xl font-extrabold text-[#222222] md:text-4xl lg:text-5xl">
             {CONTENT.partners.title}{" "}
-            <span className="text-[#C1A077]">{CONTENT.partners.titleHighlight}</span>
+            <span className="text-[#C1A077]">
+              {CONTENT.partners.titleHighlight}
+            </span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl font-cairo text-base text-[#666666] md:text-lg">
+          <p className="font-cairo mx-auto mt-4 max-w-2xl text-base text-[#666666] md:text-lg">
             {CONTENT.partners.subtitle}
           </p>
         </div>
@@ -41,12 +43,12 @@ const Partners = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex items-center justify-center rounded-2xl bg-[#F8F5F0] p-6 shadow-sm transition-all duration-300 hover:shadow-md"
+              className="flex items-center justify-center rounded-2xl bg-[#F8F5F0] p-4 shadow-sm transition-all duration-300 hover:shadow-md md:p-6"
             >
               <img
                 src={partner.logo}
                 alt={partner.name}
-                className="h-16 w-auto max-w-[140px] object-contain md:h-auto md:max-w-[170px]"
+                className="w-auto max-w-[120px] object-contain md:h-16 md:h-auto md:max-w-[170px]"
                 loading="lazy"
               />
             </motion.div>

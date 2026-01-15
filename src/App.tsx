@@ -12,6 +12,7 @@ import Testimonials from "@/components/sections/Testimonials";
 import CTA from "@/components/sections/CTA";
 import Partners from "@/components/sections/Partners";
 import FAQ from "@/components/sections/FAQ";
+import WhatsAppButton from "./components/shared/WhatsAppButton";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -48,6 +49,7 @@ function App() {
             <FAQ />
           </main>
           <Footer />
+          <WhatsAppButton />
           <Toaster />
         </div>
       </TooltipProvider>

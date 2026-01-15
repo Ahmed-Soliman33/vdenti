@@ -26,14 +26,14 @@ const FAQ = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block rounded-full bg-primary/10 px-4 py-2 font-cairo text-sm font-medium text-primary">
+          <span className="bg-primary/10 font-cairo text-primary inline-block rounded-full px-4 py-2 text-sm font-medium">
             {CONTENT.faq.badge}
           </span>
-          <h2 className="mt-4 font-cairo text-3xl font-extrabold text-[#222222] md:text-4xl">
+          <h2 className="font-cairo mt-4 text-3xl font-extrabold text-[#222222] md:text-4xl">
             {CONTENT.faq.title}{" "}
             <span className="text-primary">{CONTENT.faq.titleHighlight}</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl font-cairo text-base text-[#666666]">
+          <p className="font-cairo mx-auto mt-4 max-w-2xl text-base text-[#666666]">
             {CONTENT.faq.subtitle}
           </p>
         </motion.div>
@@ -53,10 +53,10 @@ const FAQ = () => {
                 value={`item-${index}`}
                 className="rounded-2xl border-none bg-[#F8F5F0] px-6 shadow-sm transition-all duration-300 hover:shadow-md"
               >
-                <AccordionTrigger className="py-6 text-right font-cairo text-lg font-bold text-[#222222] hover:text-[#C1A077] hover:no-underline">
+                <AccordionTrigger className="font-cairo py-6 text-right font-bold text-[#222222] hover:text-[#C1A077] hover:no-underline md:text-lg">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="pb-6 text-right font-cairo leading-loose text-[#666666]">
+                <AccordionContent className="font-cairo pb-6 text-right leading-loose text-[#666666]">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
