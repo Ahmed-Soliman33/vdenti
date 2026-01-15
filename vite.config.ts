@@ -19,9 +19,10 @@ export default defineConfig(({ mode }) => ({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "robots.txt", "apple-touch-icon.png"],
       manifest: {
-        name: "STORKWORK - Integrated Supply & Procurement Solutions",
-        short_name: "STORKWORK",
-        description: "Building and managing supply chains from design to delivery in Saudi Arabia and the Gulf",
+        name: "V-Denti - Integrated Supply & Procurement Solutions",
+        short_name: "V-Denti",
+        description:
+          "Building and managing supply chains from design to delivery in Saudi Arabia and the Gulf",
         theme_color: "#191A33", // Brand primary color (was #00523F)
         background_color: "#191A33",
         display: "standalone",
@@ -52,7 +53,7 @@ export default defineConfig(({ mode }) => ({
         runtimeCaching: [
           // Cache API requests (when backend is implemented)
           {
-            urlPattern: /^https:\/\/storkwork\.net\/api\/.*/i,
+            urlPattern: /^https:\/\/V-Denti\.net\/api\/.*/i,
             handler: "NetworkFirst",
             options: {
               cacheName: "api-cache",

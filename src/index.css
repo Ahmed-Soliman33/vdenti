@@ -634,3 +634,46 @@
     }
   }
 }
+
+/* ==========================================
+   PHONE INPUT CUSTOM STYLING (react-phone-number-input)
+   Medical/Clinical Aesthetic
+   ========================================== */
+
+/* Match shadcn/ui input styling */
+.phone-input-custom .PhoneInputInput {
+  @apply w-full px-4 py-3 text-base border border-gray-200 rounded-lg;
+  @apply focus:border-primary focus:ring-1 focus:ring-primary/10;
+  @apply transition-all duration-200 ease-in-out;
+  @apply bg-white text-gray-900;
+  @apply outline-none;
+  height: 3rem; /* Match h-12 (48px) */
+}
+
+.phone-input-custom .PhoneInputInput:hover {
+  @apply border-gray-300;
+}
+
+.phone-input-custom .PhoneInputInput::placeholder {
+  @apply text-gray-400;
+}
+
+.phone-input-custom .PhoneInputCountrySelect {
+  @apply border-none rounded-lg px-2 py-2;
+  @apply focus:border-primary focus:ring-1 focus:ring-primary/10;
+  @apply bg-transparent text-gray-900;
+  @apply outline-none;
+}
+
+.phone-input-custom .PhoneInputCountryIcon {
+  @apply mr-2;
+}
+
+/* RTL support */
+[dir="rtl"] .phone-input-custom .PhoneInputInput {
+  @apply text-right;
+}
+
+[dir="rtl"] .phone-input-custom .PhoneInputCountryIcon {
+  @apply ml-2 mr-0;
+}

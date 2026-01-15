@@ -157,8 +157,8 @@ export const CONTENT: any = {
     badge: "احجز الآن",
     title: "جاهز لابتسامة",
     titleHighlight: "أحلامك؟",
-    subtitle: "احجز موعدك الآن واحصل على استشارة مجانية مع أفضل أطباء الأسنان",
-    button: "تواصل معنا عبر واتساب",
+    subtitle: "نحن هنا لخدمتك وتقديم أفضل رعاية طبية لأسنانك",
+    button: "احجز استشارة",
   },
   partners: {
     badge: "شركاؤنا",
@@ -167,42 +167,58 @@ export const CONTENT: any = {
     subtitle: "نتعاون مع أبرز الشركات العالمية لتوفير أفضل المنتجات والخدمات",
   },
   contact: {
-    modal: {
+    section: {
       title: "تواصل معنا",
+      subtitle: "نحن هنا لخدمتك وتقديم أفضل رعاية طبية",
+      buttonText: "احجز استشارة",
+    },
+    modal: {
+      title: "احجز استشارتك",
       subtitle: "املأ النموذج وسنتواصل معك في أقرب وقت",
+      privacyNote: "معلوماتك محمية وفقاً لمعايير الخصوصية الطبية",
     },
     form: {
       fullName: {
         label: "الاسم الكامل",
         placeholder: "أدخل اسمك الكامل",
       },
-      phone: {
-        label: "رقم الجوال",
-        placeholder: "05XXXXXXXX",
-      },
       email: {
-        label: "البريد الإلكتروني (اختياري)",
+        label: "البريد الإلكتروني",
         placeholder: "example@email.com",
+      },
+      phoneNumber: {
+        label: "رقم الهاتف",
+        placeholder: "+966 5X XXX XXXX",
+        hint: "مثال: 0501234567",
       },
       serviceType: {
         label: "نوع الخدمة",
         placeholder: "اختر نوع الخدمة",
       },
-      message: {
-        label: "رسالتك",
-        placeholder: "اكتب رسالتك هنا...",
+      preferredTime: {
+        label: "الوقت المفضل",
+        placeholder: "اختر الوقت المفضل",
+      },
+      description: {
+        label: "ملاحظات إضافية (اختياري)",
+        placeholder: "اكتب أي ملاحظات أو استفسارات هنا...",
       },
       submit: "إرسال الطلب",
+      submitting: "جارٍ الإرسال...",
       cancel: "إلغاء",
+    },
+    preferredTimeOptions: {
+      morning: "صباحاً (9 ص - 12 م)",
+      evening: "مساءً (4 م - 8 م)",
     },
     toast: {
       success: {
-        title: "تم الإرسال بنجاح!",
-        description: "سنتواصل معك قريباً",
+        title: "تم إرسال طلبك بنجاح",
+        description: "سنتواصل معك قريباً لتأكيد موعدك",
       },
       error: {
-        title: "حدث خطأ",
-        description: "يرجى المحاولة مرة أخرى",
+        title: "عذراً، حدث خطأ",
+        description: "يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة",
       },
     },
   },

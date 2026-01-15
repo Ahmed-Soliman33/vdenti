@@ -23,8 +23,8 @@ const Navigation = () => {
   const navLinks = [
     { id: "home", label: CONTENT.nav.home },
     { id: "services", label: CONTENT.nav.services },
-    { id: "about", label: CONTENT.nav.about },
     { id: "portfolio", label: CONTENT.nav.portfolio },
+    { id: "about", label: CONTENT.nav.about },
     { id: "testimonials", label: CONTENT.nav.testimonials },
     { id: "faq", label: CONTENT.nav.faq },
   ];

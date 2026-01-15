@@ -9,7 +9,7 @@ interface LogoProps {
 }
 
 /**
- * Logo component for STORKWORK.
+ * Logo component for V-Denti.
  */
 const Logo = ({
   size = "md",
@@ -111,7 +111,7 @@ const Logo = ({
       className={`group flex items-center ${currentSize.gap} ${className}`}
       whileTap={animated ? { scale: 0.98 } : {}}
       transition={{ duration: 0.2 }}
-      aria-label="Back to homepage - STORKWORK"
+      aria-label="Back to homepage - V-Denti"
     >
       {logoContent}
     </motion.button>

@@ -59,7 +59,7 @@ const SEOHelmet = ({
 
       {/* LinkedIn & WhatsApp Optimization */}
       <meta property="article:author" content={author} />
-      <meta property="og:site_name" content="STORKWORK" />
+      <meta property="og:site_name" content="V-Denti" />
       <meta property="og:image:type" content="image/png" />
       <meta property="og:image:alt" content={title} />
 

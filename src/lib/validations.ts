@@ -1,23 +1,35 @@
 import { z } from "zod";
 
 export const contactFormSchema = z.object({
-  name: z
+  fullName: z
     .string()
     .min(2, "يجب أن يكون الاسم حرفين على الأقل")
     .max(100, "يجب ألا يتجاوز الاسم 100 حرف")
     .regex(/^[\u0600-\u06FFa-zA-Z\s]+$/, "الاسم يجب أن يحتوي على حروف فقط"),
 
-  phone: z
+  email: z
     .string()
-    .regex(/^05\d{8}$/, "يرجى إدخال رقم جوال سعودي صحيح (05XXXXXXXX)"),
+    .email("يرجى إدخال بريد إلكتروني صحيح")
+    .min(1, "البريد الإلكتروني مطلوب"),
 
-  service: z
+  phoneNumber: z
+    .string()
+    .min(1, "رقم الهاتف مطلوب")
+    .refine((value) => value && value.length > 0, {
+      message: "يرجى إدخال رقم هاتف صحيح",
+    }),
+
+  serviceType: z
     .string()
     .min(1, "يرجى اختيار نوع الخدمة"),
 
-  message: z
+  preferredTime: z
     .string()
-    .max(500, "يجب ألا تتجاوز الرسالة 500 حرف")
+    .min(1, "يرجى اختيار الوقت المفضل"),
+
+  description: z
+    .string()
+    .max(500, "يجب ألا يتجاوز الوصف 500 حرف")
     .optional(),
 });
 

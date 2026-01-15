@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a bilingual (English/Arabic) React-based frontend application for "STORKWORK", an integrated supply and procurement solutions platform for building and managing supply chains from design to delivery in Saudi Arabia and the Gulf. Built with Vite, TypeScript, React 19, shadcn/ui, and Tailwind CSS v4. The project features full RTL (Right-to-Left) language support for Arabic, PWA capabilities, performance optimization, and a sophisticated design system.
+This is a bilingual (English/Arabic) React-based frontend application for "V-Denti", an integrated supply and procurement solutions platform for building and managing supply chains from design to delivery in Saudi Arabia and the Gulf. Built with Vite, TypeScript, React 19, shadcn/ui, and Tailwind CSS v4. The project features full RTL (Right-to-Left) language support for Arabic, PWA capabilities, performance optimization, and a sophisticated design system.
 
 ## Development Commands
 
@@ -117,8 +117,8 @@ API configuration in `src/lib/api.ts`:
 
 **Token Management**:
 
-- Auth token stored in localStorage as `STORKWORK_auth_token`
-- Refresh token stored as `STORKWORK_refresh_token`
+- Auth token stored in localStorage as `V-Denti_auth_token`
+- Refresh token stored as `V-Denti_refresh_token`
 - `tokenManager` utilities: `getToken()`, `setToken()`, `getRefreshToken()`, `setRefreshToken()`, `clearTokens()`
 
 **API Wrapper**:
@@ -313,7 +313,7 @@ Configured via `vite-plugin-pwa` in `vite.config.ts`:
 
 **Manifest**:
 
-- Name: "STORKWORK - Integrated Supply & Procurement Solutions"
+- Name: "V-Denti - Integrated Supply & Procurement Solutions"
 - Theme color: `#191A33` (brand primary color)
 - Display: standalone
 - Orientation: portrait
@@ -322,7 +322,7 @@ Configured via `vite-plugin-pwa` in `vite.config.ts`:
 **Workbox Caching**:
 
 - **API Cache**: NetworkFirst strategy (10s timeout), 1 hour expiry, max 50 entries
-  - Pattern: `https://storkwork.net/api/*`
+  - Pattern: `https://V-Denti.net/api/*`
 - **Image Cache**: CacheFirst strategy, 30 days expiry, max 100 entries
   - Pattern: `.png|.jpg|.jpeg|.svg|.webp|.avif`
 - **Google Fonts Cache**: CacheFirst strategy, 1 year expiry
