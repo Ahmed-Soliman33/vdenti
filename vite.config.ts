@@ -75,7 +75,7 @@ export default defineConfig(({ mode }) => ({
               },
             },
           },
-          // Cache Google Fonts (for Arabic Cairo font)
+          // Cache Google Fonts
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
             handler: "CacheFirst",
@@ -136,12 +136,6 @@ export default defineConfig(({ mode }) => ({
             "@radix-ui/react-tooltip",
           ],
           "animation-vendor": ["framer-motion"],
-          "i18n-vendor": [
-            "i18next",
-            "react-i18next",
-            "i18next-http-backend",
-            "i18next-browser-languagedetector",
-          ],
           "form-vendor": ["react-hook-form", "@hookform/resolvers", "zod"],
           "query-vendor": ["@tanstack/react-query"],
         },

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import { MapPin, Twitter, Send, Linkedin, type LucideIcon } from "lucide-react";
 import { useMemo, useCallback } from "react";
 import Logo from "./Logo";
@@ -10,6 +9,7 @@ import { socialSlide } from "./header/side-menu/anim";
 import { motion } from "framer-motion";
 import { SOCIAL_LINKS, CONTACT_INFO } from "@/content/contact-data";
 import { useHomePage } from "@/hooks/useHomePage";
+import { CONTENT } from "@/lib/content";
 
 // Types for footer data
 interface FooterLink {
@@ -25,22 +25,21 @@ interface SocialLink {
 }
 
 const Footer = () => {
-  const { t, i18n } = useTranslation("footer");
   const currentYear = new Date().getFullYear();
-  const isRTL = i18n.dir() === "rtl";
-  const dir = i18n.dir();
+  const isRTL = true;
+  const dir = "rtl";
   const { data: homepage } = useHomePage();
-  const currentLang = i18n.language as "en" | "ar";
+  const currentLang = "ar";
 
   // Use API data when available, fallback to hardcoded translations
   const brandDescription =
     homepage?.footer?.brandInfo?.description?.[currentLang] ||
-    t("brand.description");
+    CONTENT.footer.brand.description;
   const email = homepage?.footer?.contactInfo?.email || CONTACT_INFO.email;
   const phone = homepage?.footer?.contactInfo?.phone || CONTACT_INFO.phone;
   const address =
     homepage?.footer?.contactInfo?.address?.[currentLang] ||
-    CONTACT_INFO.address[i18n.language];
+    CONTACT_INFO.address.ar;
 
   // Quick Links from API or fallback
   const quickLinks = useMemo<FooterLink[]>(() => {
@@ -53,13 +52,13 @@ const Footer = () => {
 
     // Fallback to hardcoded links
     return [
-      { label: t("nav.aboutUs"), href: "#about" },
-      { label: t("nav.services"), href: "#services" },
-      { label: t("nav.howWeWork"), href: "#how-we-work" },
-      { label: t("nav.whySTORKWORK"), href: "#why-storkwork" },
-      { label: t("nav.contactUs"), href: "#contact" },
+      { label: CONTENT.footer.links.about, href: "#about" },
+      { label: CONTENT.footer.links.services, href: "#services" },
+      { label: CONTENT.footer.links.testimonials, href: "#testimonials" },
+      { label: CONTENT.footer.links.faq, href: "#faq" },
+      { label: CONTENT.footer.links.contact, href: "#contact" },
     ];
-  }, [homepage, currentLang, t]);
+  }, [homepage, currentLang]);
 
   // Social Media from API or fallback
   const socialMedia = useMemo(() => {
@@ -98,7 +97,7 @@ const Footer = () => {
       dir={dir}
       className="relative overflow-hidden border-t border-t-[#FFFFFF29] bg-[#080911] text-white"
       role="contentinfo"
-      aria-label={t("sections.quickLinks")}
+      aria-label={CONTENT.footer.sections.quickLinks}
     >
       {/* top blur effects */}
       <div className="pointer-events-none absolute top-[-40%] left-[50%] z-10 hidden h-[302px] w-[773px] translate-x-[-50%] translate-y-[-50%] rounded-full bg-[#3094ca] opacity-80 blur-[736.3px] md:block" />
@@ -117,9 +116,9 @@ const Footer = () => {
             </div>
 
             {/* Quick Links Column */}
-            <nav aria-label={t("sections.quickLinks")}>
+            <nav aria-label={CONTENT.footer.sections.quickLinks}>
               <h3 className="mb-6 text-base font-semibold text-white">
-                {t("sections.quickLinks")}
+                {CONTENT.footer.sections.quickLinks}
               </h3>
               <ul className="space-y-4">
                 {quickLinks.map((link, index) => (
@@ -139,7 +138,7 @@ const Footer = () => {
             {/* Location Column */}
             <div dir={dir}>
               <h3 className="mb-6 text-base font-semibold text-white">
-                {t("sections.location")}
+                {CONTENT.footer.contact.address}
               </h3>
               <address className="not-italic">
                 <div
@@ -157,13 +156,13 @@ const Footer = () => {
             {/* Contact Column */}
             <div>
               <h3 className="mb-6 text-base font-semibold text-white">
-                {t("sections.contact")}
+                {CONTENT.footer.sections.contact}
               </h3>
               <div className="space-y-4">
                 {/* Email */}
                 <div className={`flex items-start gap-2`}>
                   <span className="text-sm font-medium text-white">
-                    {t("contact.emailLabel")}:
+                    {CONTENT.footer.contact.email}:
                   </span>
                   <a
                     href={`mailto:${email}`}
@@ -177,7 +176,7 @@ const Footer = () => {
                 {/* Phone */}
                 <div className={`flex items-start gap-2`}>
                   <span className="text-sm font-medium text-white">
-                    {t("contact.phoneLabel")}:
+                    {CONTENT.footer.contact.phone}:
                   </span>
                   <a
                     href={`tel:${phone.replace(/\s/g, "")}`}
@@ -201,7 +200,7 @@ const Footer = () => {
                     const url = socialMedia ? social.url : social.url;
                     const ariaLabel = socialMedia
                       ? social.ariaLabel[currentLang]
-                      : t(social.ariaLabelKey);
+                      : social.ariaLabelKey;
 
                     if (!Icon) return null;
 

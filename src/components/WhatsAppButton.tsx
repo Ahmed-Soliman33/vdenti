@@ -1,18 +1,16 @@
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
 import { getWhatsAppUrl } from "@/content/contact-data";
+import { CONTENT } from "@/lib/content";
 
 const WhatsAppButton = () => {
-  const { t, i18n } = useTranslation("common");
-
-  const whatsappUrl = getWhatsAppUrl(i18n.language);
+  const whatsappUrl = getWhatsAppUrl("ar");
 
   return (
     <motion.a
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={t("whatsappButton.ariaLabel")}
+      aria-label={CONTENT.whatsapp.tooltip}
       className="fixed right-4 bottom-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#2a2a2a] shadow-lg transition-shadow duration-300 lg:right-8 lg:bottom-8 lg:h-16 lg:w-16 rtl:right-auto rtl:left-4 lg:rtl:right-auto lg:rtl:left-8"
       whileHover={{
         scale: 1.1,

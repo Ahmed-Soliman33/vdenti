@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { SEO_CONFIG, buildUrl } from "@/lib/seo-constants";
 
 interface SEOHelmetProps {
@@ -13,23 +12,22 @@ interface SEOHelmetProps {
 }
 
 const SEOHelmet = ({
-  title = "STORKWORK - Integrated Supply & Procurement Solutions",
-  description = "Your trusted partner in supply and procurement solutions. Building and managing supply chains from design to delivery in Saudi Arabia and the Gulf.",
-  keywords = "supply chain, procurement, sourcing, logistics, Saudi Arabia, STORKWORK",
-  author = "STORKWORK",
+  title = "VDenti - عيادة أسنان متخصصة في المملكة العربية السعودية",
+  description = "عيادة VDenti هي وجهتك الأولى للعناية بصحة الفم والأسنان. نقدم خدمات تجميل، علاج، وزراعة الأسنان بأحدث التقنيات.",
+  keywords = "عيادة أسنان، تجميل الأسنان، زراعة الأسنان، تقويم الأسنان، السعودية، VDenti",
+  author = "VDenti",
   image = SEO_CONFIG.images.default,
   url = typeof window !== "undefined" ? window.location.href : buildUrl(),
   type = "website",
 }: SEOHelmetProps) => {
-  const { i18n } = useTranslation();
-  const currentLang = i18n.language || "en";
+  const currentLang = "ar";
 
   // Set html lang and dir attributes using useEffect
   // React 19's native metadata support doesn't handle <html> attributes
   useEffect(() => {
     document.documentElement.lang = currentLang;
-    document.documentElement.dir = i18n.dir();
-  }, [currentLang, i18n]);
+    document.documentElement.dir = "rtl";
+  }, [currentLang]);
 
   // React 19 automatically hoists these metadata tags to <head>
   return (

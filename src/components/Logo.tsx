@@ -36,7 +36,7 @@ const Logo = ({ size = "md", className = "", onClick }: LogoProps) => {
         <FaTooth className={`${currentSize.icon} text-white`} />
       </div>
       <span
-        className={`font-cairo ${currentSize.text} font-bold text-primary`}
+        className={`font-inter ${currentSize.text} font-bold text-primary`}
       >
         VDenti
       </span>

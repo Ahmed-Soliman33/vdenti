@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
-import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
 import Logo from "../Logo";
 import { useSmoothScroll } from "@/hooks/useSmoothScroll";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { Button } from "@/components/ui/button";
+import { CONTENT } from "@/lib/content";
 
 const Navigation = () => {
-  const { t } = useTranslation("common");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollToSection } = useSmoothScroll();
@@ -22,12 +21,12 @@ const Navigation = () => {
   ]);
 
   const navLinks = [
-    { id: "home", label: t("nav.home") },
-    { id: "services", label: t("nav.services") },
-    { id: "about", label: t("nav.about") },
-    { id: "features", label: t("nav.features") },
-    { id: "testimonials", label: t("nav.testimonials") },
-    { id: "faq", label: t("nav.faq") },
+    { id: "home", label: CONTENT.nav.home },
+    { id: "services", label: CONTENT.nav.services },
+    { id: "about", label: CONTENT.nav.about },
+    { id: "features", label: CONTENT.nav.features },
+    { id: "testimonials", label: CONTENT.nav.testimonials },
+    { id: "faq", label: CONTENT.nav.faq },
   ];
 
   useEffect(() => {
@@ -69,7 +68,7 @@ const Navigation = () => {
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                className={`font-cairo text-sm font-medium transition-colors ${
+                className={`font-inter text-sm font-medium transition-colors ${
                   activeSection === link.id
                     ? "text-primary"
                     : "text-gray-600 hover:text-primary"
@@ -80,9 +79,9 @@ const Navigation = () => {
             ))}
             <Button
               onClick={() => handleNavClick("contact")}
-              className="bg-primary font-cairo hover:bg-primary/90"
+              className="bg-primary font-inter hover:bg-primary/90"
             >
-              {t("nav.contact")}
+              {CONTENT.nav.contact}
             </Button>
           </div>
 
@@ -120,7 +119,7 @@ const Navigation = () => {
                   <button
                     key={link.id}
                     onClick={() => handleNavClick(link.id)}
-                    className={`rounded-lg p-4 text-right font-cairo text-lg transition-colors ${
+                    className={`rounded-lg p-4 text-right font-inter text-lg transition-colors ${
                       activeSection === link.id
                         ? "bg-primary/10 text-primary"
                         : "text-gray-700 hover:bg-gray-100"
@@ -131,10 +130,10 @@ const Navigation = () => {
                 ))}
                 <Button
                   onClick={() => handleNavClick("contact")}
-                  className="mt-4 bg-primary font-cairo hover:bg-primary/90"
+                  className="mt-4 bg-primary font-inter hover:bg-primary/90"
                   size="lg"
                 >
-                  {t("nav.contact")}
+                  {CONTENT.nav.contact}
                 </Button>
               </div>
             </motion.div>

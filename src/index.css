@@ -1,8 +1,7 @@
 @import "tailwindcss";
 
-/* Import Fonts */
+/* Import Local Fonts */
 @import "./assets/fonts/fonts.css";
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
 
 @theme {
   /* ==========================================
@@ -87,8 +86,7 @@
   --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 
   /* Fonts */
-  --font-cairo: "Cairo", sans-serif;
-  --font-inter: "Inter", sans-serif;
+  --font-rubik: "Rubik", sans-serif;
 }
 
 @layer base {
@@ -98,14 +96,14 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: "Inter", "Cairo", "Segoe UI", sans-serif;
+    font-family: "Rubik", "Segoe UI", sans-serif;
     transition:
       background-color 0.3s ease,
       color 0.3s ease;
   }
 
   html[dir="rtl"] body {
-    font-family: "Cairo", "Inter", sans-serif !important;
+    font-family: "Rubik", sans-serif !important;
   }
 
   html {

@@ -1,14 +1,13 @@
-import { useTranslation } from "react-i18next";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import LanguageSwitcher from "./LanguageSwitcher";
 import BurgerMenu from "./header/side-menu/BurgerMenu";
 import Logo from "./Logo";
 import { useScrolled } from "@/hooks/useScrollPosition";
 import { motion } from "framer-motion";
+import { CONTENT } from "@/lib/content";
 
 const Navbar = memo(() => {
-  const { t, i18n } = useTranslation("common");
-  const dir = i18n.dir();
+  const dir = "rtl";
   const [activeSection, setActiveSection] = useState("hero");
 
   const [showHeader, setShowHeader] = useState(true);
@@ -17,12 +16,12 @@ const Navbar = memo(() => {
 
   const navLinks = useMemo(
     () => [
-      { to: "hero", label: t("nav.home") },
-      { to: "about", label: t("nav.aboutUs") },
-      { to: "services", label: t("nav.services") },
-      { to: "contact", label: t("nav.contactUs") },
+      { to: "hero", label: CONTENT.nav.home },
+      { to: "about", label: CONTENT.nav.about },
+      { to: "services", label: CONTENT.nav.services },
+      { to: "contact", label: CONTENT.nav.contact },
     ],
-    [t],
+    [],
   );
   const observerCallback = useCallback(
     (entries: IntersectionObserverEntry[]) => {
@@ -162,7 +161,7 @@ const Navbar = memo(() => {
                 <button
                   key={item.label}
                   onClick={() => scrollToSection(item.to)}
-                  className={`group rtl:font-cairo relative text-[0.95rem] font-medium transition-all duration-300 hover:text-white rtl:pt-1 ${
+                  className={`group rtl:font-inter relative text-[0.95rem] font-medium transition-all duration-300 hover:text-white rtl:pt-1 ${
                     activeSection === item.to ? "text-white" : "text-[#BDBDBD]"
                   }`}
                 >

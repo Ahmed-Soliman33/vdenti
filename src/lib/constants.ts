@@ -1,3 +1,23 @@
+// Image imports - Local assets
+import heroImage from "@/assets/images/hero-image.webp";
+import team1 from "@/assets/images/team-1.webp";
+import team2 from "@/assets/images/team-2.webp";
+import team3 from "@/assets/images/team-3.webp";
+import team4 from "@/assets/images/team-4.webp";
+import orthodonticsImage from "@/assets/images/orthodontics.webp";
+import dentalImplantsImage from "@/assets/images/dental-implants.webp";
+import childrenTeethImage from "@/assets/images/children-teeth.webp";
+import aboutSectionImage from "@/assets/images/about-section.webp";
+import bannerSectionImage from "@/assets/images/banner-section.webp";
+import questionsImage from "@/assets/images/questions.webp";
+import logoImage from "@/assets/images/logo.webp";
+import heroFloatingIcon1 from "@/assets/images/hero-floating-icon-1.webp";
+import heroFloatingIcon2 from "@/assets/images/hero-floating-icon-2.webp";
+import partner1 from "@/assets/images/clients-logos/1.png";
+import partner2 from "@/assets/images/clients-logos/2.png";
+import partner3 from "@/assets/images/clients-logos/3.png";
+import partner4 from "@/assets/images/clients-logos/4.png";
+
 // Clinic Information (Placeholder - to be updated with real data)
 export const CLINIC_INFO = {
   name: "ڤي دنتي",
@@ -30,43 +50,29 @@ export const NAV_LINKS = [
   { id: "contact", label: "تواصل معنا", href: "#cta" },
 ];
 
-// Unsplash Images (Production-Ready)
+// Local Images (Production-Ready WebP/PNG)
 export const IMAGES = {
   hero: {
-    doctor:
-      "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=800&q=80",
-    // Professional female dentist in medical attire
+    doctor: heroImage,
+    floatingIcon1: heroFloatingIcon1,
+    floatingIcon2: heroFloatingIcon2,
   },
   services: {
-    orthodontics:
-      "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80",
-    // Close-up of braces/orthodontic treatment
-    implants:
-      "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=800&q=80",
-    // Dental implant or restoration work
-    pediatric:
-      "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=800&q=80",
-    // Child with healthy smile
+    orthodontics: orthodonticsImage,
+    implants: dentalImplantsImage,
+    pediatric: childrenTeethImage,
   },
   about: {
-    team: "https://images.unsplash.com/photo-1628348068343-c6a848d2b6dd?auto=format&fit=crop&w=1200&q=80",
-    // Medical team or dental professionals group photo
+    team: aboutSectionImage,
   },
   cta: {
-    background:
-      "https://images.unsplash.com/photo-1629909615957-be38f89d485e?auto=format&fit=crop&w=1600&q=80",
-    // Modern dental clinic interior
+    background: bannerSectionImage,
   },
-  partners: {
-    placeholder:
-      "https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=400&q=80",
+  faq: {
+    background: questionsImage,
   },
-  avatars: [
-    "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=100&q=80",
-    "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=100&q=80",
-    "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=100&q=80",
-    "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80",
-  ],
+  logo: logoImage,
+  avatars: [team1, team2, team3, team4],
 };
 
 // Stats Data
@@ -158,12 +164,12 @@ export const FAQS = [
   },
 ];
 
-// Partner Logos (Placeholder - will be replaced with actual logos)
+// Partner Logos (Local images)
 export const PARTNERS = [
-  { id: 1, name: "وزارة الصحة", logo: "/partners/moh.png" },
-  { id: 2, name: "الهيئة السعودية للتخصصات الصحية", logo: "/partners/scfhs.png" },
-  { id: 3, name: "رؤية 2030", logo: "/partners/vision2030.png" },
-  { id: 4, name: "مجلس الضمان الصحي", logo: "/partners/chi.png" },
+  { id: 1, name: "شريك 1", logo: partner1 },
+  { id: 2, name: "شريك 2", logo: partner2 },
+  { id: 3, name: "شريك 3", logo: partner3 },
+  { id: 4, name: "شريك 4", logo: partner4 },
 ];
 
 // Features Data

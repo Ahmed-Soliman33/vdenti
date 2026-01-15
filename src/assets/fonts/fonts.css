@@ -1,24 +1,28 @@
-
-/* /////////  Cairo Font  ///////// */
+/* /////////  Rubik Font  ///////// */
 @font-face {
-  font-family: "Cairo";
-  src: url("./Cairo-Regular.ttf") format("truetype");
-  font-weight: normal;
-}
-@font-face {
-  font-family: "Cairo";
-  src: url("./Cairo-Medium.ttf") format("truetype");
-  font-weight: medium;
+  font-family: "Rubik";
+  src: url("./Rubik-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: "Cairo";
-  src: url("./Cairo-SemiBold.ttf") format("truetype");
+  font-family: "Rubik";
+  src: url("./Rubik-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Rubik";
+  src: url("./Rubik-SemiBold.ttf") format("truetype");
   font-weight: 600;
+  font-style: normal;
 }
 
 @font-face {
-  font-family: "Cairo";
-  src: url("./Cairo-Bold.ttf") format("truetype");
-  font-weight: bold;
+  font-family: "Rubik";
+  src: url("./Rubik-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
 }
