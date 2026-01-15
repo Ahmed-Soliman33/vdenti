@@ -122,7 +122,7 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: {
-          "react-vendor": ["react", "react-dom", "react-router-dom"],
+          "react-vendor": ["react", "react-dom"],
           "ui-vendor": [
             "@radix-ui/react-accordion",
             "@radix-ui/react-checkbox",
@@ -138,7 +138,6 @@ export default defineConfig(({ mode }) => ({
           ],
           "animation-vendor": ["framer-motion"],
           "form-vendor": ["react-hook-form", "@hookform/resolvers", "zod"],
-          "query-vendor": ["@tanstack/react-query"],
         },
       },
     },
@@ -148,9 +147,7 @@ export default defineConfig(({ mode }) => ({
     include: [
       "react",
       "react-dom",
-      "react-router-dom",
       "framer-motion",
-      "@tanstack/react-query",
     ],
   },
 }));

@@ -306,7 +306,6 @@ export type NavKeys = keyof typeof CONTENT.nav;
 export type HeroKeys = keyof typeof CONTENT.hero;
 export type ServicesKeys = keyof typeof CONTENT.services;
 export type AboutKeys = keyof typeof CONTENT.about;
-export type FeaturesKeys = keyof typeof CONTENT.features;
 export type TestimonialsKeys = keyof typeof CONTENT.testimonials;
 export type CTAKeys = keyof typeof CONTENT.cta;
 export type PartnersKeys = keyof typeof CONTENT.partners;

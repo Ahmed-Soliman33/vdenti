@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Navigation from "@/components/layout/Navigation";
@@ -14,18 +13,6 @@ import Partners from "@/components/sections/Partners";
 import FAQ from "@/components/sections/FAQ";
 import WhatsAppButton from "./components/shared/WhatsAppButton";
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 5 * 60 * 1000,
-      gcTime: 10 * 60 * 1000,
-      refetchOnWindowFocus: false,
-      retry: 1,
-      refetchOnReconnect: true,
-    },
-  },
-});
-
 function App() {
   useEffect(() => {
     // Set document direction to RTL for Arabic
@@ -34,26 +21,24 @@ function App() {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <div className="min-h-screen overflow-hidden bg-white">
-          <Navigation />
-          <main>
-            <Hero />
-            <Services />
-            <OurWork />
-            <About />
-            <Testimonials />
-            <CTA />
-            <Partners />
-            <FAQ />
-          </main>
-          <Footer />
-          <WhatsAppButton />
-          <Toaster />
-        </div>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <TooltipProvider>
+      <div className="min-h-screen overflow-hidden bg-white">
+        <Navigation />
+        <main>
+          <Hero />
+          <Services />
+          <OurWork />
+          <About />
+          <Testimonials />
+          <CTA />
+          <Partners />
+          <FAQ />
+        </main>
+        <Footer />
+        <WhatsAppButton />
+        <Toaster />
+      </div>
+    </TooltipProvider>
   );
 }
 

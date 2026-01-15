@@ -238,22 +238,6 @@ export const PARTNERS = [
   { id: 4, name: "شريك 4", logo: partner4 },
 ];
 
-// Features Data
-export const FEATURES = [
-  {
-    id: "quality",
-    icon: "star",
-  },
-  {
-    id: "hygiene",
-    icon: "heart",
-  },
-  {
-    id: "experience",
-    icon: "smile",
-  },
-];
-
 // Service Types for Contact Form
 export const SERVICE_TYPES = [
   { value: "orthodontics", label: "تقويم الأسنان" },

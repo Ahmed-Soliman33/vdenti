@@ -1,5 +1,4 @@
 import React from "react";
-import { Input } from "./input";
 import { cn } from "@/lib/utils";
 
 export interface FloatingLabelInputProps
@@ -46,7 +45,7 @@ const FloatingLabelInput = React.forwardRef<
           )}
 
           {/* Input Field */}
-          <Input
+          <input
             ref={ref}
             value={value}
             dir={dir}

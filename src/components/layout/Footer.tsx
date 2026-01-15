@@ -16,7 +16,7 @@ const Footer = () => {
   const { scrollToSection } = useSmoothScroll();
 
   const quickLinks = [
-    { id: "home", label: CONTENT.footer.links.home },
+    { id: "hero", label: CONTENT.footer.links.home },
     { id: "services", label: CONTENT.footer.links.services },
     { id: "about", label: CONTENT.footer.links.about },
     { id: "portfolio", label: CONTENT.footer.links.portfolio },
