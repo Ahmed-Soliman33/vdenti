@@ -1,0 +1,429 @@
+@import "tailwindcss";
+
+/* Import Fonts */
+@import "./assets/fonts/fonts.css";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap");
+
+@theme {
+  /* ==========================================
+     VDENTI DENTAL CLINIC COLOR SYSTEM
+     Based on: Beige/Tan (#C8B398) & Neutrals
+     ========================================== */
+
+  /* Core Foundation */
+  --color-background: #ffffff;
+  --color-foreground: #1a1a1a;
+
+  --color-card: #ffffff;
+  --color-card-foreground: #1a1a1a;
+
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1a1a1a;
+
+  /* Primary - Warm Beige/Tan */
+  --color-primary: #c8b398;
+  --color-primary-foreground: #ffffff;
+  --color-primary-dark: #b39a7d;
+  --color-primary-light: #ddd0be;
+
+  /* Primary Scale */
+  --color-primary-50: #f9f6f2;
+  --color-primary-100: #f0ebe3;
+  --color-primary-200: #e4d9c9;
+  --color-primary-300: #d5c4aa;
+  --color-primary-400: #c8b398;
+  --color-primary-500: #b39a7d;
+  --color-primary-600: #9a8268;
+  --color-primary-700: #7d6854;
+  --color-primary-800: #645345;
+  --color-primary-900: #4d4136;
+
+  /* Neutrals */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+
+  /* Secondary - Neutral Gray for text */
+  --color-secondary: #f5f5f5;
+  --color-secondary-foreground: #1a1a1a;
+
+  /* Accent - Light warm background */
+  --color-accent: #f8f4ef;
+  --color-accent-foreground: #1a1a1a;
+
+  /* Muted - Subtle backgrounds */
+  --color-muted: #f5f5f5;
+  --color-muted-foreground: #6b6b6b;
+
+  /* Borders */
+  --color-border: #e5e5e5;
+  --color-input: #ffffff;
+  --color-ring: #c8b398;
+
+  /* Destructive - Error red */
+  --color-destructive: #dc2626;
+  --color-destructive-foreground: #ffffff;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(200, 179, 152, 0.15);
+  --glass-shadow: 0 4px 24px rgba(200, 179, 152, 0.12);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #c8b398 0%, #b39a7d 100%);
+  --gradient-subtle: linear-gradient(180deg, #ffffff 0%, #f8f4ef 100%);
+
+  /* Shadows - Warm tint */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+  /* Fonts */
+  --font-cairo: "Cairo", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", "Cairo", "Segoe UI", sans-serif;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  html[dir="rtl"] body {
+    font-family: "Cairo", "Inter", sans-serif !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-dark);
+  }
+}
+
+@layer components {
+  button {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  /* Phone Input Dark Theme Styling */
+  .phone-input-dark {
+    background: #2d3e52;
+    border: 1px solid #3d4e62;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .phone-input-dark:focus-within {
+    border-color: #4d5e72;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .phone-input-dark .PhoneInputInput {
+    background: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    height: 100%;
+    font-size: 0.875rem;
+  }
+
+  .phone-input-dark .PhoneInputInput::placeholder {
+    color: #6b7280;
+  }
+
+  .phone-input-dark .PhoneInputCountrySelect {
+    background: #2d3e52;
+    color: white;
+    border: none;
+    margin-right: 0.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+
+  /* Style the dropdown options */
+  .phone-input-dark .PhoneInputCountrySelect option {
+    background: #2d3e52;
+    color: white;
+    padding: 0.5rem;
+  }
+
+  /* Hover state for options (works in some browsers) */
+  .phone-input-dark .PhoneInputCountrySelect option:hover {
+    background: #3d4e62;
+  }
+
+  .phone-input-dark .PhoneInputCountryIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.25rem;
+  }
+
+  .phone-input-dark .PhoneInputCountrySelectArrow {
+    color: white;
+    opacity: 0.7;
+    margin-left: 0.25rem;
+  }
+
+  /* ==========================================
+     LOGO LOOP / INFINITE LOOPER ANIMATIONS
+     ========================================== */
+
+  @keyframes slideAnim {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes slideAnimRTL {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  .looper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .looper__innerList {
+    display: flex;
+    justify-content: flex-start;
+    width: fit-content;
+  }
+
+  .looper__innerList[data-animate="true"] .looper__listInstance {
+    animation: slideAnim linear infinite;
+  }
+
+  .looper__listInstance {
+    display: flex;
+    width: max-content;
+    animation: none;
+  }
+
+  .looper__innerList[data-animate="false"] .looper__listInstance {
+    animation-play-state: paused;
+  }
+
+  /* Fade-out gradients */
+  .fade-gradient-left,
+  .fade-gradient-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .fade-gradient-left {
+    left: 0;
+    background: linear-gradient(
+      to right,
+      var(--fade-color, #080911) 0%,
+      transparent 100%
+    );
+  }
+
+  .fade-gradient-right {
+    right: 0;
+    background: linear-gradient(
+      to left,
+      var(--fade-color, #080911) 0%,
+      transparent 100%
+    );
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .looper__innerList[data-animate="true"] .looper__listInstance {
+      animation: none;
+      transform: translateX(0);
+    }
+  }
+
+  /* ==========================================
+     PREMIUM DIALOG ANIMATIONS
+     ========================================== */
+
+  @keyframes dialog-slide-in {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, -45%) scale(0.96);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  @keyframes dialog-slide-out {
+    0% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translate(-50%, -48%) scale(0.96);
+    }
+  }
+
+  @keyframes backdrop-fade-in {
+    0% {
+      opacity: 0;
+      backdrop-filter: blur(0px);
+    }
+    100% {
+      opacity: 1;
+      backdrop-filter: blur(4px);
+    }
+  }
+
+  @keyframes backdrop-fade-out {
+    0% {
+      opacity: 1;
+      backdrop-filter: blur(4px);
+    }
+    100% {
+      opacity: 0;
+      backdrop-filter: blur(0px);
+    }
+  }
+
+  /* Respect reduced motion for dialog animations */
+  @media (prefers-reduced-motion: reduce) {
+    [data-state="open"],
+    [data-state="closed"] {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* ==========================================
+     SWIPER CAROUSEL CUSTOM STYLES
+     ========================================== */
+
+  /* Swiper container styling */
+  .features-swiper {
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    overflow: visible !important;
+  }
+
+  /* Swiper wrapper - ensure proper height */
+  .features-swiper .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  /* Swiper slide - ensure proper sizing */
+  .features-swiper .swiper-slide {
+    height: auto;
+    display: flex;
+    align-items: stretch;
+  }
+
+  /* Smooth transitions for feature cards */
+  .feature-card {
+    transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform, opacity, background-color;
+    width: 100%;
+  }
+
+  /* Active center card */
+  .swiper-slide-active .feature-card {
+    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.2);
+    opacity: 1 !important;
+  }
+
+  /* Non-active cards */
+  .swiper-slide:not(.swiper-slide-active) .feature-card {
+    transform: scale(0.9);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    opacity: 0.6;
+  }
+
+  /* Icon glow pulse animation */
+  @keyframes glow-pulse {
+    0%,
+    100% {
+      opacity: 0.8;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 2s ease-in-out infinite;
+  }
+
+  /* Respect reduced motion for carousel */
+  @media (prefers-reduced-motion: reduce) {
+    .feature-card {
+      transition: none;
+    }
+    .animate-glow-pulse {
+      animation: none;
+    }
+  }
+}
